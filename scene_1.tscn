@@ -461,6 +461,44 @@ Higher melons brings more score ;)
 Control: left, right, space/up, esc"
 horizontal_alignment = 1
 
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-66, 556)
+rotation = 0.523598
+curve = SubResource("Curve2D_2fno3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(629.006, -385.642)
+rotation = -2.1046
+progress = 489.544
+
+[node name="pila" parent="Path2D/PathFollow2D" instance=ExtResource("9_mjd5i")]
+visible = false
+position = Vector2(2.9978, -0.11528)
+rotation = 3.10315
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_mjd5i")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(126.786, 506.752)
+rotation = -1.58692
+progress = 316.124
+
+[node name="pila" parent="Path2D2/PathFollow2D" instance=ExtResource("9_mjd5i")]
+visible = false
+position = Vector2(0.817146, 0.969124)
+rotation = -3.13542
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_t0rxu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+position = Vector2(66, 515)
+rotation = -1.58337
+
+[node name="pila" parent="Path2D3/PathFollow2D" instance=ExtResource("9_mjd5i")]
+visible = false
+
 [node name="OverPanel" type="Panel" parent="."]
 visible = false
 offset_left = 31.0
@@ -506,49 +544,11 @@ offset_bottom = 360.0
 theme_override_font_sizes/font_size = 36
 text = "YES"
 
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(-66, 556)
-rotation = 0.523598
-curve = SubResource("Curve2D_2fno3")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(629.006, -385.642)
-rotation = -2.1046
-progress = 489.544
-
-[node name="pila" parent="Path2D/PathFollow2D" instance=ExtResource("9_mjd5i")]
-visible = false
-position = Vector2(2.9978, -0.11528)
-rotation = 3.10315
-
-[node name="Path2D2" type="Path2D" parent="."]
-curve = SubResource("Curve2D_mjd5i")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(126.786, 506.752)
-rotation = -1.58692
-progress = 316.124
-
-[node name="pila" parent="Path2D2/PathFollow2D" instance=ExtResource("9_mjd5i")]
-visible = false
-position = Vector2(0.817146, 0.969124)
-rotation = -3.13542
-
-[node name="Path2D3" type="Path2D" parent="."]
-curve = SubResource("Curve2D_t0rxu")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
-position = Vector2(66, 515)
-rotation = -1.58337
-
-[node name="pila" parent="Path2D3/PathFollow2D" instance=ExtResource("9_mjd5i")]
-visible = false
-
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerCas" to="." method="_on_timer_cas_timeout"]
-[connection signal="pressed" from="OverPanel/noButton" to="." method="_on_no_button_pressed"]
-[connection signal="pressed" from="OverPanel/yesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="zasah_pilou" from="Path2D/PathFollow2D/pila" to="." method="_on_pila_zasah_pilou"]
 [connection signal="zasah_pilou" from="Path2D2/PathFollow2D/pila" to="." method="_on_pila_zasah_pilou"]
 [connection signal="zasah_pilou" from="Path2D3/PathFollow2D/pila" to="." method="_on_pila_zasah_pilou"]
+[connection signal="pressed" from="OverPanel/noButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="OverPanel/yesButton" to="." method="_on_yes_button_pressed"]

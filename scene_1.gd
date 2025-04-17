@@ -6,6 +6,7 @@ class_name hra
 
 var pocetMelounu = 0
 var maxMelounu = 10
+var maxMelounIndex = 0
 
 func _on_timer_timeout() -> void:
 	if pocetMelounu < maxMelounu:
@@ -14,9 +15,11 @@ func _on_timer_timeout() -> void:
 		(m as Area2D).position.x =  48 + randi()%23 * 32 
 		(m as Area2D).position.y = 152 + vyska * 64
 		m.hodnota = (8-vyska) * 5
-		print("Novy meloun: " + str(m.hodnota))
 		add_child(m)
 		pocetMelounu += 1
+		maxMelounIndex = m.get_index()
+
+		print("Novy meloun: %d (idx: %d)" % [m.hodnota, maxMelounIndex])
 
 	var sec = int($TimerCas.time_left)
 	var minuty = int(sec / 60)
@@ -41,7 +44,7 @@ func gameOver():
 	$Path2D/PathFollow2D/pila.stop()
 	$Path2D2/PathFollow2D/pila.stop()
 	$Path2D3/PathFollow2D/pila.stop()
-
+	move_child($OverPanel, maxMelounIndex+1)
 	$OverPanel.visible = true
 	$OverPanel/Label.text = "Score:" + str($CharacterBody2D.skore)
 
